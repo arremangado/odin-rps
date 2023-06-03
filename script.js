@@ -1,3 +1,6 @@
+let playerScore = 0;
+let cpuScore = 0;
+
 function getComputerChoice() {
     //console.log(getRandomArbitrary(1, 4));
     let cpuChoice = parseInt(getRandomArbitrary(1, 4));
@@ -25,6 +28,7 @@ function playRound(playerSelection, computerSelection){
     if(playerSelection == "rock" && computerSelection == "paper")
     {
         console.log("CPU WINS");
+        cpuScore++;
         return 2;
     }
     else if(playerSelection == "rock" && computerSelection == "rock")
@@ -35,6 +39,7 @@ function playRound(playerSelection, computerSelection){
     else if(playerSelection == "rock" && computerSelection == "scissors")
     {
         console.log("PLAYER WINS");
+        playerScore++;
         return 1;
     }
     else if(playerSelection == "paper" && computerSelection == "paper")
@@ -45,11 +50,13 @@ function playRound(playerSelection, computerSelection){
     else if(playerSelection == "paper" && computerSelection == "rock")
     {
         console.log("PLAYER WINS");
+        playerScore++;
         return 1;
     }
     else if(playerSelection == "paper" && computerSelection == "scissors")
     {
         console.log("CPU WINS");
+        cpuScore++;
         return 2;
     }
     else if(playerSelection == "scissors" && computerSelection == "scissors")
@@ -60,11 +67,13 @@ function playRound(playerSelection, computerSelection){
     else if(playerSelection == "scissors" && computerSelection == "paper")
     {
         console.log("PLAYER WINS");
+        playerScore++;
         return 1;
     }
     else if(playerSelection == "scissors" && computerSelection == "rock")
     {
         console.log("CPU WINS");
+        cpuScore++;
         return 2;
     }
     else
@@ -94,4 +103,69 @@ function game() {
         console.log("ERROR???");
 }
 
-game();
+function playerSelectedRock(){
+    //let myselection = prompt("Enter player selection");
+    //return myselection;
+   // console.log("Rock SELECTED");
+    playRound('rock', getComputerChoice());
+    playerScoreElement.innerHTML = playerScore;
+    cpuScoreElement.innerHTML = cpuScore;
+    if(playerScore == 5 || cpuScore == 5 ){
+        gameOver();
+    }
+}
+
+function playerSelectedPaper(){
+    //let myselection = prompt("Enter player selection");
+    //return myselection;
+   // console.log("Paper SELECTED");
+    playRound('paper', getComputerChoice());
+    playerScoreElement.innerHTML = playerScore;
+    cpuScoreElement.innerHTML = cpuScore;
+    if(playerScore == 5 || cpuScore == 5 ){
+        gameOver();
+    }
+}
+
+function playerSelectedScissors(){
+    //let myselection = prompt("Enter player selection");
+    //return myselection;
+    //console.log("Scissors SELECTED");
+    playRound('scissors', getComputerChoice());
+    playerScoreElement.innerHTML = playerScore;
+    cpuScoreElement.innerHTML = cpuScore;
+    if(playerScore == 5 || cpuScore == 5 ){
+        gameOver();
+    }
+}
+
+function gameOverAnimation(){
+    playerScoreElement.remove();
+    cpuScoreElement.remove();
+}
+
+function gameOver(){
+    if(playerScore > cpuScore){
+        resultElement.innerHTML = "PLAYER WINS!!!";
+        gameOverAnimation();
+    }
+    else if(cpuScore > playerScore){
+        resultElement.innerHTML = "CPU WINS :(";
+        gameOverAnimation();
+    }
+    else
+        console.log("ERROR???");
+}
+
+document.getElementById("rock").addEventListener("click", playerSelectedRock);
+document.getElementById("paper").addEventListener("click", playerSelectedPaper);
+document.getElementById("scissors").addEventListener("click", playerSelectedScissors);
+
+const playerScoreElement = document.getElementById("playerScore");
+const cpuScoreElement = document.getElementById("cpuScore");
+const resultElement = document.getElementById("gameOverSection");
+
+//document.getElementById("PlayerScore").addEventListener("click", playerSelection);
+
+
+
