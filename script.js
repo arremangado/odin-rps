@@ -1,5 +1,6 @@
 let playerScore = 0;
 let cpuScore = 0;
+let roundResult;
 
 function getComputerChoice() {
     //console.log(getRandomArbitrary(1, 4));
@@ -107,12 +108,24 @@ function playerSelectedRock(){
     //let myselection = prompt("Enter player selection");
     //return myselection;
    // console.log("Rock SELECTED");
-    playRound('rock', getComputerChoice());
+    roundResult = playRound('rock', getComputerChoice());
     playerScoreElement.innerHTML = playerScore;
     cpuScoreElement.innerHTML = cpuScore;
     if(playerScore == 5 || cpuScore == 5 ){
         gameOver();
+        return;
     }
+    if(roundResult == 1){
+        playerWinsRoundAnimation();
+    }
+    else if(roundResult == 2){
+        cpuWinsRoundAnimation();
+    }
+      else if(roundResult == 3){
+        tiedRound();
+    }
+    else
+        console.log("lol");
 }
 
 function playerSelectedPaper(){
@@ -124,7 +137,19 @@ function playerSelectedPaper(){
     cpuScoreElement.innerHTML = cpuScore;
     if(playerScore == 5 || cpuScore == 5 ){
         gameOver();
+        return;
     }
+    if(roundResult == 1){
+        playerWinsRoundAnimation();
+    }
+    else if(roundResult == 2){
+        cpuWinsRoundAnimation();
+    }
+    else if(roundResult == 3){
+        tiedRound();
+    }
+    else
+        console.log("lol");
 }
 
 function playerSelectedScissors(){
@@ -136,13 +161,47 @@ function playerSelectedScissors(){
     cpuScoreElement.innerHTML = cpuScore;
     if(playerScore == 5 || cpuScore == 5 ){
         gameOver();
+        return;
     }
+    if(roundResult == 1){
+        playerWinsRoundAnimation();
+    }
+    else if(roundResult == 2){
+        cpuWinsRoundAnimation();
+    }
+    else if(roundResult == 3){
+        tiedRound();
+    }
+    else
+        console.log("lol");
 }
 
 function gameOverAnimation(){
     playerScoreElement.remove();
     cpuScoreElement.remove();
 }
+
+function playerWinsRoundAnimation(){
+    pageBackground.style.backgroundColor = 'green';
+    setTimeout(() => {
+        pageBackground.style.backgroundColor = '#ebebeb';
+      }, 100);
+}
+
+function cpuWinsRoundAnimation(){
+    pageBackground.style.backgroundColor = 'red';
+    setTimeout(() => {
+        pageBackground.style.backgroundColor = '#ebebeb';
+      }, 100);
+}
+
+function tiedRound(){
+    pageBackground.style.backgroundColor = 'grey';
+    setTimeout(() => {
+        pageBackground.style.backgroundColor = '#ebebeb';
+      }, 100);
+}
+
 
 function gameOver(){
     if(playerScore > cpuScore){
@@ -161,9 +220,12 @@ document.getElementById("rock").addEventListener("click", playerSelectedRock);
 document.getElementById("paper").addEventListener("click", playerSelectedPaper);
 document.getElementById("scissors").addEventListener("click", playerSelectedScissors);
 
+
 const playerScoreElement = document.getElementById("playerScore");
 const cpuScoreElement = document.getElementById("cpuScore");
 const resultElement = document.getElementById("gameOverSection");
+const pageBackground = document.querySelector("body");
+const buttonArea = document.querySelector("buttonArea");
 
 //document.getElementById("PlayerScore").addEventListener("click", playerSelection);
 
