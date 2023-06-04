@@ -6,14 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id = 'rock'>Rock</button>
-    <button id = 'paper'>Paper</button>
-    <button id = 'scissors'>Scissors</button>
+    <div id = 'welcomeMessage'>LET'S PLAY SOME ROCK PAPER & SCISSORS</div>
+    <div id= "scoresValue">
+        <div id ='playerScoreValue'>PLAYER</div>
+        <div id ='cpuScoreValue'>CPU</div>
+    </div>
     <div id = 'scores'>
-        <div id = 'playerScore'>Playerscore</div>
-        <div id = 'cpuScore'>cpuscore</div>
+        <div id = 'playerScore'></div>
+        <div id = 'cpuScore'></div>
+    </div>
+    <div id="buttonArea">
+        <button id = 'rock'><img src="images/rocks.jpg" alt="add source" border="0" /></button>
+        <button id = 'paper'><img src="images/paper.jpg" alt="add source" border="0" /></button>
+        <button id = 'scissors'><img src="images/scissors.jpg" alt="add source" border="0" /></button>
     </div>
     <div id = 'gameOverSection'></div>
 </body>
