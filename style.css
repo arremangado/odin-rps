@@ -1,0 +1,99 @@
+body{
+    background-color: #ebebeb;
+}
+
+#buttonArea{
+    display: flex;
+    padding: 50px;
+    gap: 50px;
+    justify-content: center;
+    padding-bottom: 130px;
+
+}
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  button {
+    background-color: inherit;
+        transition: transform 0.7s ease-in-out;
+        padding:10px;
+        border:2px solid black;
+        outline :none;
+        border-radius:5px;
+        font-size:24px;
+        color: black;
+        transition: transform .2s;
+  }
+
+  button:hover {
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    background-color: rgb(255, 207, 15);
+  }
+
+#welcomeMessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family: Marker Felt;
+    margin: auto;
+    font-size: 75px;
+    padding: 50px;
+    padding-bottom: 80px;
+}
+
+#scores{
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family: Marker Felt;
+    margin: auto;
+    font-size: 30px;
+    gap: 75px;
+}
+
+#scoresValue{
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family: Marker Felt;
+    margin: auto;
+    font-size: 30px;
+    gap: 50px;
+    padding-bottom: 20px;
+}
+
+#playerScoreValue{
+    padding-right: 10px;
+}
+
+#cpuScore{
+    padding-left: 50px;
+}
+
+#playerScore{
+    padding-left: 20px;
+}
+
+#footer{
+    display: flex;
+    background-color: #1F2937;
+    font-size: 18px;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #E5E7EB;
+    justify-content: center;
+    height:50px;
+    border:0px;
+    padding-top: 25px;
+}
+
+body{
+    margin: auto;
+}
