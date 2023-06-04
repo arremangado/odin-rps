@@ -202,6 +202,16 @@ function tiedRound(){
       }, 100);
 }
 
+function setupResetButton(myButton){
+    this.style.innerHTML = 'Play again?';
+    this.style.display = 'flex';
+    this.style.justifyContent = 'center';
+}
+
+function refreshPage(){
+    window.location.reload();
+} 
+
 function playerWinsGameAnimation(){
     pageBackground.style.backgroundColor = 'green';
     playerScoreElement.remove();
@@ -211,7 +221,17 @@ function playerWinsGameAnimation(){
     buttonArea.remove();
     scoresArea.remove();
     scoresValue.remove();
+    const resetButton = document.createElement("button");
+    document.body.appendChild(resetButton);
+    //setupResetButton(resetButton);
+    resetButton.innerHTML = 'Play again?';
+    resetButton.style.display = 'flex';
+    resetButton.style.justifyContent = 'center';
+    resetButton.style.backgroundColor = 'white';
+    resetButton.style.margin = 'auto';
+    resetButton.addEventListener("click", refreshPage);
 }
+
 
 function cpuWinsGameAnimation(){
     pageBackground.style.backgroundColor = 'red';
@@ -222,6 +242,15 @@ function cpuWinsGameAnimation(){
     buttonArea.remove();
     scoresArea.remove();
     scoresValue.remove();
+    const resetButton = document.createElement("button");
+    document.body.appendChild(resetButton);
+    //setupResetButton(resetButton);
+    resetButton.innerHTML = 'Play again?';
+    resetButton.style.display = 'flex';
+    resetButton.style.justifyContent = 'center';
+    resetButton.style.backgroundColor = 'white';
+    resetButton.style.margin = 'auto';
+    resetButton.addEventListener("click", refreshPage);
 }
 
 function flashWinnerMessage(){
@@ -264,6 +293,7 @@ document.getElementById("paper").addEventListener("click", playerSelectedPaper);
 document.getElementById("scissors").addEventListener("click", playerSelectedScissors);
 
 
+
 const playerScoreElement = document.getElementById("playerScore");
 const cpuScoreElement = document.getElementById("cpuScore");
 const resultElement = document.getElementById("gameOverSection");
@@ -273,6 +303,7 @@ const welcomeMessage = document.getElementById("welcomeMessage");
 const footer = document.getElementById("footer");
 const scoresArea = document.getElementById("scores");
 const scoresValue = document.getElementById("scoresValue");
+//const bodyContainer = document.querySelector("body");
 
 //document.getElementById("PlayerScore").addEventListener("click", playerSelection);
 
