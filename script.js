@@ -125,14 +125,14 @@ function playerSelectedRock(){
         tiedRound();
     }
     else
-        console.log("lol");
+    console.log(roundResult);
 }
 
 function playerSelectedPaper(){
     //let myselection = prompt("Enter player selection");
     //return myselection;
    // console.log("Paper SELECTED");
-    playRound('paper', getComputerChoice());
+   roundResult = playRound('paper', getComputerChoice());
     playerScoreElement.innerHTML = playerScore;
     cpuScoreElement.innerHTML = cpuScore;
     if(playerScore == 5 || cpuScore == 5 ){
@@ -149,14 +149,14 @@ function playerSelectedPaper(){
         tiedRound();
     }
     else
-        console.log("lol");
+        console.log(roundResult);
 }
 
 function playerSelectedScissors(){
     //let myselection = prompt("Enter player selection");
     //return myselection;
     //console.log("Scissors SELECTED");
-    playRound('scissors', getComputerChoice());
+    roundResult = playRound('scissors', getComputerChoice());
     playerScoreElement.innerHTML = playerScore;
     cpuScoreElement.innerHTML = cpuScore;
     if(playerScore == 5 || cpuScore == 5 ){
@@ -173,7 +173,7 @@ function playerSelectedScissors(){
         tiedRound();
     }
     else
-        console.log("lol");
+    console.log(roundResult);
 }
 
 function gameOverAnimation(){
@@ -202,15 +202,58 @@ function tiedRound(){
       }, 100);
 }
 
+function playerWinsGameAnimation(){
+    pageBackground.style.backgroundColor = 'green';
+    playerScoreElement.remove();
+    cpuScoreElement.remove();
+    welcomeMessage.remove();
+    footer.remove();
+    buttonArea.remove();
+    scoresArea.remove();
+    scoresValue.remove();
+}
+
+function cpuWinsGameAnimation(){
+    pageBackground.style.backgroundColor = 'red';
+    playerScoreElement.remove();
+    cpuScoreElement.remove();
+    welcomeMessage.remove();
+    footer.remove();
+    buttonArea.remove();
+    scoresArea.remove();
+    scoresValue.remove();
+}
+
+function flashWinnerMessage(){
+    if(resultElement.style.color == 'white')
+        resultElement.style.color = 'black';
+    else
+        resultElement.style.color = 'white';
+}
 
 function gameOver(){
     if(playerScore > cpuScore){
         resultElement.innerHTML = "PLAYER WINS!!!";
-        gameOverAnimation();
+        resultElement.style.display = 'flex';
+        resultElement.style.color = 'white';
+        resultElement.style.fontFamily = 'Marker Felt';
+        resultElement.style.fontSize = '100px';
+        resultElement.style.margin = 'auto';
+        resultElement.style.justifyContent = 'center';
+        resultElement.style.padding = '200px';
+        setInterval(flashWinnerMessage, 500);
+        playerWinsGameAnimation();
     }
     else if(cpuScore > playerScore){
-        resultElement.innerHTML = "CPU WINS :(";
-        gameOverAnimation();
+        resultElement.innerHTML = "CPU WINS \n:(";
+        resultElement.style.color = 'black';
+        resultElement.style.display = 'flex';
+        resultElement.style.fontFamily = 'Marker Felt';
+        resultElement.style.fontSize = '100px';
+        resultElement.style.margin = 'auto';
+        resultElement.style.justifyContent = 'center';
+        resultElement.style.padding = '200px';
+        cpuWinsGameAnimation();
     }
     else
         console.log("ERROR???");
@@ -225,7 +268,11 @@ const playerScoreElement = document.getElementById("playerScore");
 const cpuScoreElement = document.getElementById("cpuScore");
 const resultElement = document.getElementById("gameOverSection");
 const pageBackground = document.querySelector("body");
-const buttonArea = document.querySelector("buttonArea");
+const buttonArea = document.getElementById("buttonArea");
+const welcomeMessage = document.getElementById("welcomeMessage");
+const footer = document.getElementById("footer");
+const scoresArea = document.getElementById("scores");
+const scoresValue = document.getElementById("scoresValue");
 
 //document.getElementById("PlayerScore").addEventListener("click", playerSelection);
 

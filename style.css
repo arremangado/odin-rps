@@ -7,6 +7,7 @@ body{
     padding: 50px;
     gap: 50px;
     justify-content: center;
+    padding-bottom: 130px;
 
 }
 
@@ -40,6 +41,8 @@ body{
     font-family: Marker Felt;
     margin: auto;
     font-size: 75px;
+    padding: 50px;
+    padding-bottom: 80px;
 }
 
 #scores{
@@ -77,4 +80,20 @@ body{
 
 #playerScore{
     padding-left: 20px;
+}
+
+#footer{
+    display: flex;
+    background-color: #1F2937;
+    font-size: 18px;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #E5E7EB;
+    justify-content: center;
+    height:50px;
+    border:0px;
+    padding-top: 25px;
+}
+
+body{
+    margin: auto;
 }
