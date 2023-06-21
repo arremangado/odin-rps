@@ -1,0 +1,10 @@
+{% load static %}
+
+<!-- post_list.html -->
+
+        <link href="{% static 'blog/style.css' %}" rel="stylesheet">
+
+        {% for post in posts %}
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+        {% endfor %}
