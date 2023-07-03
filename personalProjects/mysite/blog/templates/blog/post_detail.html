@@ -1,4 +1,42 @@
-<h2>{{ post.title }}</h2>
-<p>{{ post.content }}</p>
-<p>{{ post.author }}</p>
-<p>{{ post.publish_date}} </p>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'blog/css/detailPostStyle.css' %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li id="arremangado">Arremangado's blog</li>
+            <li><a href="{% url 'post_list' %}">Home</a></li>
+            <li><a href="{% url 'post_list' %}">Blog</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div id="postSection">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <p>{{ post.author }}</p>
+        <p>{{ post.publish_date}} </p>
+        <a href="{% url 'post_list' %}" class="post-list-button">Back to Post List</a>
+        <form method="post" action="{% url 'delete_post' post.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,76 @@
+
+body{
+    background-color: rgb(9, 9, 9);
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+
+#postTitle{
+    font-size: 25px;
+    color: rgb(255, 3, 3);
+    text-decoration: none;
+    padding-left: 100px;
+}
+
+#postTitle:hover{
+    color:#ff5722
+}
+
+#postSection{
+    background-color: #ff5722;
+    border: solid #000000;
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 50px;
+}
+
+#postContent{
+    font-size: 15px;
+    color: black;
+    padding-left: 50px;
+}
+
+#postAuthor{
+    font-size: 8px;
+    color: black;
+    padding-left: 20px;
+}
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(63, 50, 208);
+}
+
+.navbar li {
+    float: left;
+    margin-top: 15px;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: rgb(148, 113, 113);
+}
+
+#arremangado{
+    color: rgb(255, 255, 255);
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    padding-right: 60%;
+    font-size: 25px;
+}
+
+
+

@@ -1,9 +1,41 @@
-<!-- post_edit.html -->
-<form method="POST">
-    {% csrf_token %}
-    <label>Title:</label>
-    <input type="text" name="title" value="{{ post.title }}">
-    <label>Content:</label>
-    <textarea name="content">{{ post.content }}</textarea>
-    <button type="submit">Save</button>
-</form>
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'blog/css/newPost.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <ul class="navbar">
+            <li id="arremangado">Arremangado's blog</li>
+            <li><a href="{% url 'post_list' %}">Home</a></li>
+            <li><a href="{% url 'post_list' %}">Blog</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'post_new' %}" class="new-post-button">New Post</a></li>
+                <li id="logout"><a href="{% url 'logout' %}">Logout</a></li>
+                <li><i class="gg-search"></i></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div id="formContainer">
+        <form method="POST">
+            {% csrf_token %}
+            <label>Title</label>
+            <input id ="titleInput" type="text" name="title" value="{{ post.title }}">
+            <label>Content</label>
+            <input id = "contentInput" type="text" name="content">{{ post.content }}</input>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

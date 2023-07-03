@@ -1,0 +1,36 @@
+form {
+    width: 300px;
+    margin: auto;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+body{
+    background-color: #2a307b;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+button {
+    color: #ff5722;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ff5722;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    color: #ffffff;
+    background-color: #ff5722;
+}

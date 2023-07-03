@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Post
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from .forms import RegistrationForm
+
 
 @login_required
 def post_list(request):
@@ -12,10 +14,14 @@ def post_list(request):
     return render(request, 'blog/post_list.html', {'posts': posts})
     #return HttpResponse("In the works")
 
-#@login_required
+
+@login_required
 def post_detail(request, id):
     post = Post.objects.get(id=id)
     return render(request, 'blog/post_detail.html', {'post': post})
+
+def blog_home(request):
+    return render(request, 'blog/blog_home.html')
 
 @login_required
 def post_new(request):
@@ -25,7 +31,7 @@ def post_new(request):
         post.content = request.POST['content']
         post.author = request.user
         post.save()
-        return redirect('post_detail', id=post.id)
+        return render(request, 'blog/post_detail.html', {'post': post})
     else:
         return render(request, 'blog/post_edit.html')
 
@@ -47,15 +53,19 @@ class PostDeleteView(DeleteView):
 
 # views.py
 
-from django.shortcuts import render, redirect
-from .forms import RegistrationForm
 
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # or wherever you want to redirect after registration
+            return redirect('')  # or wherever you want to redirect after registration
     else:
         form = RegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.delete()
+    return redirect('post_list')
